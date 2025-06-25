@@ -1,0 +1,1 @@
+python -m streamlit run horario_ctp/main.py
