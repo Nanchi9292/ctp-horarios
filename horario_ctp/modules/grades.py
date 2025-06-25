@@ -9,9 +9,9 @@ from pathlib import Path
 import calendar
 from io import BytesIO
 import xlsxwriter # type: ignore
-import plotly.express as px # type: ignore
-import plotly.graph_objects as go # type: ignore
-from plotly.subplots import make_subplots # type: ignore
+# import plotly.express as px # type: ignore
+# import plotly.graph_objects as go # type: ignore
+# from plotly.subplots import make_subplots # type: ignore
 
 # CSS personalizado para mejorar la apariencia
 st.markdown("""
@@ -739,22 +739,19 @@ class GradeManager:
                     with col3:
                         st.metric("Nota más baja", f"{min(notas):.1f}")
 
-                    # Mostrar gráfico de barras para las notas
-                    fig = go.Figure(data=[
-                        go.Bar(
-                            x=[col for col in edited_df.columns if col not in ['Estudiante', 'Total']],
-                            y=notas,
-                            text=notas,
-                            textposition='auto',
-                        )
-                    ])
-                    fig.update_layout(
-                        title=f"Notas de {estudiante}",
-                        yaxis_title="Puntuación",
-                        yaxis_range=[0, 100],
-                        showlegend=False
-                    )
-                    st.plotly_chart(fig, use_container_width=True)
+                    # Mostrar notas en formato de texto mientras plotly no esté disponible
+                    st.write(f"**Notas de {estudiante}:**")
+                    estudiante_data = edited_df[edited_df['Estudiante'] == estudiante]
+                    if not estudiante_data.empty:
+                        for col in estudiante_data.columns:
+                            if col not in ['Estudiante', 'Total']:
+                                try:
+                                    nota = estudiante_data[col].values[0]
+                                    st.write(f"- {col}: {nota:.1f}")
+                                except:
+                                    st.write(f"- {col}: N/A")
+                    else:
+                        st.write("No se encontraron datos para este estudiante")
 
         # Botón para exportar
         if st.button("📥 Exportar a Excel", key=f"export_{tipo}"):
