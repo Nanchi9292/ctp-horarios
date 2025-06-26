@@ -2,7 +2,7 @@ import streamlit as st
 
 # Configuración de la página (DEBE ser el primer comando de Streamlit)
 st.set_page_config(
-    page_title="Sistema de Gestión CTP (Fase Beta)",
+    page_title="Student Calendar (Fase Beta)",
     page_icon="🏫",
     layout="wide"
 )
@@ -44,7 +44,7 @@ class MainApp:
 
             st.markdown("""
             <div style='color: #e67e22; font-size: 1.1rem; font-weight: bold; text-align: center;'>
-            🚧 Sistema en fase beta: Puede contener errores o cambios frecuentes. 🚧
+            🚧 Student Calendar en fase beta: Puede contener errores o cambios frecuentes. 🚧
             </div>
             """, unsafe_allow_html=True)
             st.title(f"👋 ¡Hola, {st.session_state['user']['name']}!")
