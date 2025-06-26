@@ -15,7 +15,7 @@ def generate_manual_view():
             🚧 Sistema en fase beta 🚧
         </p>
         <p style='color: #666; font-size: 1.2rem;'>
-            Guía completa del Sistema de Gestión CTP Las Palmitas
+            Guía completa del Sistema de Gestión CTP
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -65,7 +65,7 @@ def show_welcome_section():
     st.markdown("""
     ### ¿Qué es este sistema?
 
-    El **Sistema de Gestión CTP Las Palmitas** es una plataforma integral diseñada para facilitar
+    El **Sistema de Gestión** es una plataforma integral diseñada para facilitar
     la administración académica del centro educativo. Este sistema combina múltiples funcionalidades
     en una sola aplicación web moderna y fácil de usar.
 
